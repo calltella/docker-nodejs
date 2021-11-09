@@ -1,26 +1,35 @@
 # docker-react
 
 ```
-docker-compose exec app bash
+$ git clone https://github.com/calltella/docker-react.git
+$ cd docker-react
 ```
 
 ```
-composer create-project laravel/laravel . --prefer-dist "8.5.20"
+$ cp .env.sample .env
 ```
 
 ```
-composer require laravel/ui
-php artisan ui react
+$ docker-compose exec app bash
 ```
 
 ```
-sudo chown -R $USER:$USER laravel
-chmod -R 777 laravel/storage
+# composer create-project laravel/laravel . --prefer-dist "8.5.20"
 ```
 
 ```
-docker-compose exec web ash
-npm install
-npm install resolve-url-loader
-npm run dev
+# composer require laravel/ui
+# php artisan ui react
+```
+
+```
+$ sudo chown -R $USER:$USER laravel
+$ chmod -R 777 laravel/storage
+```
+
+```
+$ docker-compose exec web ash
+# npm install
+# npm install resolve-url-loader
+# npm run dev
 ```
