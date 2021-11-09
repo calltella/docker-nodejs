@@ -13,6 +13,8 @@ ENV TZ=UTC \
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer
 
+RUN useradd -m -s /bin/sh -u 1000 nginx
+
 RUN apt-get update && \
   apt-get -y install git libicu-dev libonig-dev libzip-dev unzip locales && \
   apt-get clean && \
@@ -24,7 +26,10 @@ RUN apt-get update && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.org
 
-#COPY ./infra/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
+#COPY ./infra/php/php-fpm.d/docker-www.conf /usr/local/etc/php-fpm.d/docker-www.conf
+COPY ./infra/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./infra/php/php.ini /usr/local/etc/php/php.ini
+
+#USER nginx
 
 WORKDIR /var/www/html

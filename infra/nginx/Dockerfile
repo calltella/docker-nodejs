@@ -1,5 +1,5 @@
-FROM node:14.2-alpine as node
-FROM nginx:1.18-alpine
+FROM node:17-alpine as node
+FROM nginx:1.20.1-alpine
 SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
 
 ENV TZ=UTC
